@@ -1014,7 +1014,7 @@ img,svg,video,canvas{max-width:100%}
         </div>
         <div class="card">
           <h3><span class="ico">👑</span> <span data-i18n="ad.adminAcc">حساب الكابتن (الأدمن)</span></h3>
-          <div class="fld"><label data-i18n="ad.adminUser">اسم مستخدم الأدمن</label><input class="inp" id="setAdmU" dir="ltr"></div>
+           <div class="fld"><label data-i18n="ad.adminUser">اسم مستخدم الكابتن (اسمه)</label><input class="inp" id="setAdmU"></div>
           <div class="fld"><label data-i18n="ad.adminPass">كلمة مرور الأدمن</label><input class="inp" id="setAdmP" dir="ltr"></div>
           <button class="btn d" id="saveAdmin" data-i18n="btn.saveadm">تحديث بيانات الأدمن</button>
           <div class="divider"></div>
@@ -1387,7 +1387,7 @@ const EN = {
  'ad.photoUrl':'Image URL','ad.upload':'Or upload an image from your device','ad.storeImg':'Extra image URLs (one per line)','ad.texts':'Texts','ad.heroTitle':'Home page title',
  'ad.typed':'Animated text (comma or • separated)','ad.address':'Address / training venue','btn.saveall':'Save content','ad.contacts':'Numbers & payment',
  'ad.wa':'Coach WhatsApp (international format)','ad.insta':'InstaPay number','ad.voda':'Vodafone Cash number','ad.price1':'Monthly price (EGP)','ad.price2':'3 months price',
- 'ad.price3':'6 months price','ad.price4':'Yearly price','btn.saveset':'Save settings','ad.adminAcc':'Coach (admin) account','ad.adminUser':'Admin username','ad.adminPass':'Admin password',
+ 'ad.price3':'6 months price','ad.price4':'Yearly price','btn.saveset':'Save settings', 'ad.adminAcc':'Coach (admin) account','ad.adminUser':'Captain username (his name)','ad.adminPass':'Captain password (starts with elsherbeny…)',
  'btn.saveadm':'Update admin credentials','ad.quiet':'Click sound','ad.quietD':'A very low, subtle boxing punch sound on click, editable from the sound button at the top.',
  'ad.quietOn':'Enable default boxing click sound','ad.exp':'Export backup','ad.expD':'Save all site data (players, programs, schedule, settings) as a JSON file on your device.',
  'btn.exp2':'Download file','ad.imp':'Import backup','ad.impD':'Restore previously saved data from a JSON file.','ad.reset':'Reset','ad.resetD':'Delete all edits and return to base data (added players will be removed).',
@@ -1422,7 +1422,7 @@ const DYN = {
    'msg.noplayers':'لا يوجد لاعبون مطابقون للبحث.','msg.noreq':'لا توجد طلبات جديدة حاليًا.','msg.noprog':'لا توجد برامج بعد. أضف أول برنامج من زر «إضافة برنامج».',
    'msg.emptyann':'لا توجد إعلانات.','btn.prog':'تفاصيل البرنامج','pl.month':'شهري','pl.quarter':'3 شهور','pl.half':'6 شهور','pl.year':'سنوي','pl.mo':'ج.م','pl.pop':'الأكثر طلبًا',
    'confirm.del':'تأكيد حذف هذا العنصر نهائيًا؟','ok':'تم بنجاح','err.required':'من فضلك أكمل البيانات المطلوبة.','err.user':'اسم المستخدم مستخدم بالفعل، اختر اسمًا آخر.',
-   'err.userfmt':'اسم المستخدم يجب أن يكون بحروف إنجليزية وأرقام فقط (بدون مسافات).','err.pass':'كلمتان المرور غير متطابقتين.','err.passlen':'كلمة المرور 4 أحرف على الأقل.',
+    'err.userfmt':'اسم المستخدم هو اسم اللاعب — اكتب الاسم بالعربية أو بالإنجليزية (حروف وأرقام ومسافات فقط).','err.pass':'كلمتان المرور غير متطابقتين.','err.passlen':'كلمة المرور 4 أحرف على الأقل.',
    'ok.reg':'تم تسجيل بياناتك وحفظها في الموقع','ok.regd':'سيتم إرسال إشعار واتساب للكابتن إياد الآن ببياناتك. احتفظ باسم المستخدم وكلمة المرور للدخول.',
     'pf.mine':'بياناتي','pf.sub':'حالة الاشتراك','pf.champ':'بطل النادي','pf.since':'عضو منذ','pf.program':'برنامجي المقترح',
     'pf.badges':'إنجازاتي وشاراتي','pf.cat':'الوزن الملاكمي (الفئة)','pf.goal':'هدفي الشخصي','pf.actions':'إجراءات سريعة',
@@ -1438,7 +1438,7 @@ const DYN = {
    'msg.noplayers':'No players match your search.','msg.noreq':'No new requests right now.','msg.noprog':'No programs yet. Add the first one.',
    'msg.emptyann':'No announcements.','btn.prog':'Program details','pl.month':'Monthly','pl.quarter':'3 months','pl.half':'6 months','pl.year':'Yearly','pl.mo':'EGP','pl.pop':'Most popular',
    'confirm.del':'Delete this item permanently?','ok':'Done','err.required':'Please complete the required fields.','err.user':'This username already exists, choose another.',
-   'err.userfmt':'Username must contain English letters and numbers only.','err.pass':'Passwords do not match.','err.passlen':'Password must be at least 4 characters.',
+    'err.userfmt':'The username is the player name — use Arabic or English letters, numbers and spaces only.','err.pass':'Passwords do not match.','err.passlen':'Password must be at least 4 characters.',
    'ok.reg':'Your data has been saved on the site','ok.regd':'A WhatsApp notification is being sent to Coach Eyad now. Keep your username and password to sign in.',
     'pf.mine':'My data','pf.sub':'Subscription status','pf.champ':'Club champion','pf.since':'Member since','pf.program':'Suggested program',
     'pf.badges':'My achievements & badges','pf.cat':'Boxing weight class','pf.goal':'My personal goal','pf.actions':'Quick actions',
@@ -2309,7 +2309,8 @@ function openEdit(title, fields, data, onSave){
 const STATUS_OPTS=[['active','نشط / Active'],['pending','قيد المراجعة / Pending'],['stopped','موقوف / Suspended'],['expired','منتهي / Expired']];
 function playerFields(){
   return [
-    {k:'nameAr',l:'الاسم بالعربية'},{k:'nameEn',l:'الاسم بالإنجليزية (EN)'},{k:'username',l:'اسم المستخدم (EN)',h:'حروف إنجليزية وأرقام فقط'},
+    {k:'nameAr',l:L('الاسم بالعربية','Name (Arabic)')},{k:'nameEn',l:L('الاسم بالإنجليزية','Name (English)')},
+    {k:'username',l:L('اسم المستخدم (اسم اللاعب)','Username (player name)'),h:L('اسم اللاعب بالعربية أو الإنجليزية','The player name in Arabic or English')},
     {k:'password',l:'كلمة المرور'},{k:'phone',l:'رقم الموبايل / واتساب'},{k:'age',l:'السن',t:'number'},
     {k:'weight',l:'الوزن (كجم)',t:'number'},{k:'height',l:'الطول (سم)',t:'number'},
     {k:'level',l:L('المستوى','Level'),t:'select',o:LEVELS},{k:'plan',l:L('الباقة','Package'),t:'select',o:PLANS},
